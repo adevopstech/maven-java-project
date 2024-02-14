@@ -2,16 +2,16 @@ pipeline {
     agent {
         label 'slave1'
     }
-    /*
+    
     tools {
         jdk 'myjava'
         git 'Default'
-    }*/
+    }
     stages {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/maven-java-project.git']])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/maven-java-project.git']])
             }
         }
         stage('Code Compile') {
