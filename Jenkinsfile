@@ -2,6 +2,9 @@
 pipeline {
     /* groovylint-disable-next-line CompileStatic */
     agent any
+    triggers {
+               pollSCM('* * * * *')
+            }
     tools {
         jdk 'myjava'
         git 'Default'
@@ -15,9 +18,6 @@ pipeline {
             }
         }
         stage('Code Compile') {
-            triggers {
-               cron('* * * * *')
-            }
             steps {
                 echo 'Code compile through Maven'
                 sh 'mvn compile'
