@@ -3,7 +3,7 @@ pipeline {
         label 'slave1'
     }
     tools{
-        jdk 'jdk8'
+        jdk 'myjava'
     }
     /*
     tools {
