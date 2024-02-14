@@ -4,7 +4,7 @@ pipeline {
     }
     tools {
         jdk 'myjava'
-        git '2.34.1'
+        git 'Default'
     }
     stages {
         stage('Git Checkout') {
