@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    // Timeout counter starts AFTER agent is allocated
+    options {
+        timeout(time: 1, unit: 'SECONDS')
+    }
+
     triggers{
         pollSCM('* * * * *')
     }
