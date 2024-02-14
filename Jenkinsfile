@@ -7,6 +7,11 @@ pipeline {
         git 'Default'
     }
 
+    // Keeps the last 1 build, adjust as needed
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '1')) 
+    }
+
     //maven-java project stages block
     stages {
         stage('Git Checkout') {
