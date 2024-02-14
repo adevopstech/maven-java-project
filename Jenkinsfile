@@ -1,4 +1,6 @@
+/* groovylint-disable CompileStatic */
 pipeline {
+    /* groovylint-disable-next-line CompileStatic */
     agent any
     triggers {
         pollSCM('*/1 * * * *')
@@ -11,6 +13,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
+                /* groovylint-disable-next-line LineLength */
                 checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/maven-java-project.git']])
             }
         }
@@ -34,8 +37,8 @@ pipeline {
         }
     }
     post {
-                success {
-                    junit '**/target/surefire-reports/*.xml'
-                }
+        success {
+            junit '**/target/surefire-reports/*.xml'
+        }
     }
 }
