@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers{
+        pollSCM('* * * * *')
+    }
     tools {
         jdk 'myjava'
         git 'Default'
