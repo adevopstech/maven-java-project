@@ -30,6 +30,9 @@ pipeline {
             }
         }
         stage('Code Deploy') {
+            triggers {
+                pollSCM('*/1 * * * *')
+            }
             steps {
                 echo 'Craete package through Maven'
                 sh 'mvn package'
