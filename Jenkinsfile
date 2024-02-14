@@ -3,7 +3,7 @@ pipeline {
     /* groovylint-disable-next-line CompileStatic */
     agent any
     triggers {
-        pollSCM('*/1 * * * *')
+        cron('* * * * *')
     }
     tools {
         jdk 'myjava'
@@ -30,9 +30,6 @@ pipeline {
             }
         }
         stage('Code Deploy') {
-            triggers {
-                pollSCM('*/1 * * * *')
-            }
             steps {
                 echo 'Craete package through Maven'
                 sh 'mvn package'
