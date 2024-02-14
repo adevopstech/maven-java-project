@@ -7,11 +7,6 @@ pipeline {
         git 'Default'
     }
     stages {
-        stage('Poll SCM- Build Trigger'){
-            triggers {
-               cron('* * * * *')
-            }
-        }
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
@@ -20,6 +15,9 @@ pipeline {
             }
         }
         stage('Code Compile') {
+            triggers {
+               cron('* * * * *')
+            }
             steps {
                 echo 'Code compile through Maven'
                 sh 'mvn compile'
