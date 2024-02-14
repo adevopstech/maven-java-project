@@ -2,15 +2,15 @@
 pipeline {
     /* groovylint-disable-next-line CompileStatic */
     agent any
-    triggers {
-        cron('* * * * *')
-    }
     tools {
         jdk 'myjava'
         git 'Default'
     }
     stages {
         stage('Git Checkout') {
+            triggers {
+        cron('* * * * *')
+    }
             steps {
                 echo 'Git Repository check'
                 /* groovylint-disable-next-line LineLength */
