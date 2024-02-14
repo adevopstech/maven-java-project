@@ -2,10 +2,11 @@ pipeline {
     agent {
         label 'slave1'
     }
+    /*
     tools {
         jdk 'myjava'
         git 'Default'
-    }
+    }*/
     stages {
         stage('Git Checkout') {
             steps {
