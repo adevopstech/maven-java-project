@@ -1,6 +1,8 @@
 pipeline {
     agent {
         label 'slave1'
+        jdk 'myjava'
+        git 'Default'
     }
 
     // Timeout counter starts AFTER agent is allocated
