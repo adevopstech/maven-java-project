@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    /*options {
+    options {
         timeout(time: 1, unit: 'HOURS')
-    }*/
+    }
     triggers {
-        cron('* * * * *')
+        pollSCM('* * * * *')
     }
     tools {
         jdk 'myjava'
