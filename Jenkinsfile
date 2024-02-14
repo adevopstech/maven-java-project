@@ -3,7 +3,7 @@ pipeline {
         label 'slave1'
     }
     tools{
-        maven 'Maven 3.6.3'
+        jdk 'jdk8'
     }
     /*
     tools {
