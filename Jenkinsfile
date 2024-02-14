@@ -1,10 +1,5 @@
-/* groovylint-disable CompileStatic */
 pipeline {
-    /* groovylint-disable-next-line CompileStatic */
     agent any
-    triggers {
-               pollSCM('* * * * *')
-            }
     tools {
         jdk 'myjava'
         git 'Default'
@@ -13,7 +8,6 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                /* groovylint-disable-next-line LineLength */
                 checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/maven-java-project.git']])
             }
         }
