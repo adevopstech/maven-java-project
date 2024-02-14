@@ -2,14 +2,16 @@
 pipeline {
     /* groovylint-disable-next-line CompileStatic */
     agent any
-    triggers {
-        cron('* * * * *')
-    }
     tools {
         jdk 'myjava'
         git 'Default'
     }
     stages {
+        stage('Poll SCM- Build Trigger'){
+            triggers {
+               cron('* * * * *')
+            }
+        }
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
