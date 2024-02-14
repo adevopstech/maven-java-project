@@ -1,15 +1,13 @@
 pipeline {
-    agent {
-        label 'slave1'
-    }
-    tools{
-        jdk 'myjava'
-    }
-    /*
+    agent any 
+
+    //List of tools
     tools {
         jdk 'myjava'
         git 'Default'
-    }*/
+    }
+
+    //maven-java project stages block
     stages {
         stage('Git Checkout') {
             steps {
@@ -36,6 +34,8 @@ pipeline {
             }
         }
     }
+
+    //test report block
     post {
         success {
             junit '**/target/surefire-reports/*.xml'
