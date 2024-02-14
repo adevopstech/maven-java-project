@@ -1,21 +1,10 @@
 pipeline {
     agent {
         label 'slave1'
-        jdk 'myjava'
-        git 'Default'
-    }
-
-    // Timeout counter starts AFTER agent is allocated
-    options {
-        timeout(time: 1, unit: 'SECONDS')
-    }
-
-    triggers{
-        pollSCM('* * * * *')
     }
     tools {
         jdk 'myjava'
-        git 'Default'
+        git '2.34.1'
     }
     stages {
         stage('Git Checkout') {
