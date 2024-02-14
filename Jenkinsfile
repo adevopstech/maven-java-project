@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'slave1'
     }
+    tools{
+        maven '3.6.3'
+    }
     /*
     tools {
         jdk 'myjava'
