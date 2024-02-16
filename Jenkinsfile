@@ -1,11 +1,13 @@
 pipeline {
 
     parameters {
+
         choice(
             name: 'Choice',
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
             )
+            
         choice(
             name: 'Approver',
             choices: ['jadmin','devopsadmin'],
