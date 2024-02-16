@@ -25,6 +25,10 @@ pipeline {
 
     //maven-java project stages block
     stages {
+        stage('Env Selection') {
+              echo "Choice: ${params.CHOICE}"
+            }
+        }
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
@@ -33,7 +37,6 @@ pipeline {
         }
         stage('Code Compile') {
             steps {
-                echo "Choice: ${CHOICE}"
                 echo 'Code compile through Maven'
                 sh 'mvn compile'
             }
