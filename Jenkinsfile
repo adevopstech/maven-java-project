@@ -1,5 +1,15 @@
 pipeline {
-    agent any 
+
+    parameters {
+
+        choice(
+            name: 'CHOICE',
+            choices: ['Test', 'Dev', 'Prod'],
+            description: 'Pick env to deploy app'
+            )
+    }
+
+    agent any
 
     //List of tools
     tools {
@@ -23,6 +33,7 @@ pipeline {
         }
         stage('Code Compile') {
             steps {
+                echo "Choice: ${CHOICE}"
                 echo 'Code compile through Maven'
                 sh 'mvn compile'
             }
