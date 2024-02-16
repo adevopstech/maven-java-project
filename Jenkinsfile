@@ -5,11 +5,12 @@ pipeline {
     tools {
         jdk 'myjava'
         git 'Default'
+        maven 'mymaven'
     }
 
-    // Keeps the last 1 build, adjust as needed
+    // Keeps the last 1 build
     options {
-        buildDiscarder(logRotator(numToKeepStr: '1')) 
+        buildDiscarder(logRotator(numToKeepStr: '1'))
     }
 
     //maven-java project stages block
