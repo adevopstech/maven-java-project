@@ -18,7 +18,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/maven-java-project.git']])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/addressbook.git']])
             }
         }
         stage('Code Compile') {
