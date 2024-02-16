@@ -7,9 +7,9 @@ pipeline {
             description: 'Pick env to deploy app'
             )
         string(
-            name: 'Git-Repo-Link',
-            defaultValue: 'https://github.com/adevopstech/addressbook.git',
-            description: 'Requierement for Git Repo Lnik'
+            name: 'Branch_Name',
+            defaultValue: 'main',
+            description: 'Requierement of branch'
         )
     }
 
@@ -37,7 +37,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                checkout scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: string:${params.Git-Repo-Link}]])
+                checkout scm: scmGit(branches: [[name: ${params.Branch_Name}]], extensions: [], userRemoteConfigs: [[url:'https://github.com/adevopstech/addressbook.git']])
             }
         }
         stage('Code Compile') {
