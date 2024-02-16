@@ -29,7 +29,7 @@ pipeline {
 
     // Trigger Job
      triggers {
-        cron('* * * * *')
+        pollSCM('*/1 * * * *')
     }
 
     //maven-java project stages block
