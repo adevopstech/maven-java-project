@@ -9,7 +9,7 @@ pipeline {
         string(
             name: 'Git-Repo-Link',
             defaultValue: 'https://github.com/adevopstech/addressbook.git',
-            description: 'Git Repo Lnik?'
+            description: 'Requierement for Git Repo Lnik'
         )
     }
 
@@ -37,7 +37,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: ${params.Git-Repo-Link}]])
+                checkout scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: ${params.Git-Repo-Link}]])
             }
         }
         stage('Code Compile') {
