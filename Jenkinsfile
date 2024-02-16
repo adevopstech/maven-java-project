@@ -5,12 +5,13 @@ pipeline {
             name: 'Choice',
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
-            )
+        )
+
         string(
             name: 'Approver',
             defaultValue: 'jadmin',
             description: 'Who is the Approver ?'
-        )
+        ) 
     }
 
     agent any
@@ -25,6 +26,11 @@ pipeline {
     // Keeps the last 1 build
     options {
         buildDiscarder(logRotator(numToKeepStr: '1'))
+    }
+
+    // Trigger Job
+     triggers {
+        cron('* * * * *')
     }
 
     //maven-java project stages block
