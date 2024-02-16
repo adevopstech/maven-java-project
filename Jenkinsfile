@@ -1,12 +1,12 @@
 pipeline {
 
     parameters {
-
         choice(
             name: 'Choice',
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
             )
+
         choice(
             name: 'Approver',
             choices: ['jadmin','devopsadmin'],
@@ -30,11 +30,11 @@ pipeline {
 
     //maven-java project stages block
     stages {
-        stage('Env Selection') {
-            steps {
-                echo "Choice: ${params.Choice}"
-            }
-        }
+        // stage('Env Selection') {
+        //     steps {
+        //         echo "Choice: ${params.Choice}"
+        //     }
+        // }
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
