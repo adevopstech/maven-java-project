@@ -6,11 +6,6 @@ pipeline {
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
             )
-        string(
-            name: 'Branch_Name',
-            defaultValue: 'main',
-            description: 'Requierement of branch'
-        )
     }
 
     agent any
@@ -37,7 +32,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                checkout scm: scmGit(branches: [[name: ${params.Branch_Name}]], extensions: [], userRemoteConfigs: [[url:'https://github.com/adevopstech/addressbook.git']])
+                checkout scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:'https://github.com/adevopstech/addressbook.git']])
             }
         }
         stage('Code Compile') {
@@ -53,6 +48,9 @@ pipeline {
             }
         }
         stage('Code Deploy') {
+            input {
+                message "Are we continue to deploy?"
+            }
             steps {
                 echo 'Craete package through Maven'
                 sh 'mvn package'
