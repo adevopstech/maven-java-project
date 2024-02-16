@@ -6,7 +6,6 @@ pipeline {
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
             )
-            
         string(
             name: 'Approver',
             defaultValue: 'jadmin',
