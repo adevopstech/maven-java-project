@@ -1,12 +1,16 @@
 pipeline {
 
     parameters {
-
         choice(
             name: 'CHOICE',
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
             )
+        string(
+            name: 'Git-Repo-Link',
+            defaultValue: 'https://github.com/adevopstech/addressbook.git',
+            description: 'Git Repo Lnik?'
+        )
     }
 
     agent any
@@ -33,7 +37,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/addressbook.git']])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: ${params.Git-Repo-Link}]])
             }
         }
         stage('Code Compile') {
