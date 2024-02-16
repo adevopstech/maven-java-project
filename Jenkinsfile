@@ -2,10 +2,15 @@ pipeline {
 
     parameters {
         choice(
-            name: 'CHOICE',
+            name: 'Choice',
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
             )
+        string(
+            name: 'Approver',
+            defaultValue: 'Jenkins User',
+            description: 'Who is the Approver?'
+        )
     }
 
     agent any
@@ -26,7 +31,7 @@ pipeline {
     stages {
         stage('Env Selection') {
             steps {
-                echo "Choice: ${params.CHOICE}"
+                echo "Choice: ${params.Choice}"
             }
         }
         stage('Git Checkout') {
@@ -50,9 +55,11 @@ pipeline {
         stage('Code Deploy') {
             input {
                 message "Are we continue to deploy?"
+                submitter "alice,bob"
             }
             steps {
-                echo 'Craete package through Maven'
+                echo "Hello, ${Approver}, Thanks for Approval."
+                echo 'Create package through Maven.'
                 sh 'mvn package'
             }
         }
