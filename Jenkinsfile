@@ -6,9 +6,9 @@ pipeline {
             choices: ['Test', 'Dev', 'Prod'],
             description: 'Pick env to deploy app'
             )
-        string(
+        choice(
             name: 'Approver',
-            defaultValue: 'jadmin',
+            choices: ['jadmin','devopsadmin'],
             description: 'Who is the Approver?'
         )
     }
@@ -55,7 +55,6 @@ pipeline {
         stage('Code Deploy') {
             input {
                 message "Are we continue to deploy?"
-                submitter "Jenkins Server"
             }
             steps {
                 echo "Hello, ${Approver}, Thanks for Approval."
