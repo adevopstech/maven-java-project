@@ -26,7 +26,8 @@ pipeline {
     //maven-java project stages block
     stages {
         stage('Env Selection') {
-              echo "Choice: ${params.CHOICE}"
+            steps {
+                echo "Choice: ${params.CHOICE}"
             }
         }
         stage('Git Checkout') {
