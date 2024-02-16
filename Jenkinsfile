@@ -9,7 +9,7 @@ pipeline {
         string(
             name: 'Approver',
             defaultValue: 'jadmin',
-            description: 'Who is the Approver?'
+            description: 'Who is the Approver ?'
         )
     }
 
