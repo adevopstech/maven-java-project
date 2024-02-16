@@ -8,7 +8,7 @@ pipeline {
             )
         string(
             name: 'Approver',
-            defaultValue: 'Jenkins User',
+            defaultValue: 'jadmin',
             description: 'Who is the Approver?'
         )
     }
@@ -55,7 +55,7 @@ pipeline {
         stage('Code Deploy') {
             input {
                 message "Are we continue to deploy?"
-                submitter "alice,bob"
+                submitter "Jenkins Server"
             }
             steps {
                 echo "Hello, ${Approver}, Thanks for Approval."
