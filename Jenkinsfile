@@ -7,9 +7,9 @@ pipeline {
             description: 'Pick env to deploy app'
             )
 
-        choice(
+        string(
             name: 'Approver',
-            choices: ['jadmin','devopsadmin'],
+            defaultValue: 'jadmin',
             description: 'Who is the Approver?'
         )
     }
@@ -30,11 +30,6 @@ pipeline {
 
     //maven-java project stages block
     stages {
-        // stage('Env Selection') {
-        //     steps {
-        //         echo "Choice: ${params.Choice}"
-        //     }
-        // }
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
