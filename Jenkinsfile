@@ -37,7 +37,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Repository check'
-                checkout scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: ${params.Git-Repo-Link}]])
+                checkout scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: string:${params.Git-Repo-Link}]])
             }
         }
         stage('Code Compile') {
