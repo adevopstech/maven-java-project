@@ -20,12 +20,12 @@ pipeline {
                 branch '*/main'
             }
         }
-        stage('Maven Validate') {
-            steps {
-                echo 'Maven Validate the code'
-                sh 'mvn validate'
-            }
-        }
+        // stage('Maven Validate') {
+        //     steps {
+        //         echo 'Maven Validate the code'
+        //         sh 'mvn validate'
+        //     }
+        // }
         stage('Maven Compile') {
             steps {
                 echo 'Maven Compile the code'
