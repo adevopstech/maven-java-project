@@ -50,7 +50,6 @@ pipeline {
                 echo 'file copied'
                 sh 'cp target/addressbook.war /opt/apache-tomcat-9.0.85/webapps/examples/'
             }
-           
-        })
+        }
     }
 }
