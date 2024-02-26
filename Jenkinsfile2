@@ -12,15 +12,12 @@ pipeline {
 
     stages {
         stage('Git Checkout') {
-            when {
-                branch '*/main'
-                beforeOptions true
-                beforeInput true
-                beforeAgent true
-            }
             steps {
                 echo 'Git Version and Brach Check'
                 checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/maven-java-sample.git']])
+            }
+            when {
+                branch '*/main'
             }
         }
         stage('Maven Validate') {
