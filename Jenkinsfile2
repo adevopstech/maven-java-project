@@ -36,10 +36,11 @@ pipeline {
             }
         }
         stage('Deploy Package') {
-            input(message: 'Are you deploy this package'){
-                echo "!! Thanks for confirmation !!"
+            input {
+                message "Should we continue?"
             }
             steps {
+                echo "!! Thanks for Your Confirmation !!"
                 echo 'Maven Package Deploy'
                 sh 'mvn package'
             }
