@@ -48,6 +48,7 @@ pipeline {
         stage('Copy War file to Tomcat') {
             steps {
                 echo 'file copied'
+                sh 'chmod -R 777 .'
                 sh 'rsync -av target/addressbook.war /opt/apache-tomcat-9.0.85/webapps/'
             }
         }
