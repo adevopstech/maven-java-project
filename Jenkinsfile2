@@ -35,22 +35,20 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Check Deploy Branch') {
+        stage('Check Deploy Branch and Deploy Create Package') {
             when {
                 branch 'test'
             }
             steps {
                 echo 'Deploying'
-            }
-        }
-        stage('Deploy Package') {
-            input {
-                message "Should we continue?"
-            }
-            steps {
-                echo "!! Thanks for Your Confirmation !!"
-                echo 'Maven Package Deploy'
-                sh 'mvn package'
+                input {
+                    message "Should we continue ?"
+                }
+                steps {
+                    echo "!! Thanks for Your Confirmation !!"
+                    echo 'Maven Package Deploy'
+                    sh 'mvn package'
+                }
             }
         }
     }
