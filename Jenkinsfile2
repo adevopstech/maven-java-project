@@ -41,11 +41,11 @@ pipeline {
             }
             steps {
                 echo 'Deploying'
-                input {
-                    message "Should we continue ?"
-                }
+                //                input {
+                //     message 'Should we continue?'
+                // }
                 steps {
-                    echo "!! Thanks for Your Confirmation !!"
+                    echo '!! Thanks for Your Confirmation !!'
                     echo 'Maven Package Deploy'
                     sh 'mvn package'
                 }
