@@ -5,18 +5,23 @@ pipeline {
             jdk 'myjava'
             maven 'mymaven'
     }
+    
     when {
             branch '*/main'
             beforeOptions true
             beforeInput true
             beforeAgent true
     }
+    
+    options {
+            buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '1', numToKeepStr: '1')
+    }
 
     stages {
         stage('Git Checkout') {
             steps {
                 echo 'Git Version and Brach Check'
-                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/Spring-boot-Sample-Project.git']])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/maven-java-sample.git']])
             }
         }
         stage('Maven Validate') {
