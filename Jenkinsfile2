@@ -14,7 +14,13 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 echo 'Git Version and Brach Check'
-                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/hello-world-maven-java-test.git']])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adevopstech/addressbook.git']])
+            }
+        }
+        stage('Maven Validate') {
+            steps {
+                echo 'Maven Validate the code'
+                sh 'mvn validate'
             }
         }
         stage('Maven Compile') {
@@ -30,6 +36,9 @@ pipeline {
             }
         }
         stage('Deploy Package') {
+            input(message: 'Are you deploy this package'){
+                echo "!! Thanks for confirmation !!"
+            }
             steps {
                 echo 'Maven Package Deploy'
                 sh 'mvn package'
