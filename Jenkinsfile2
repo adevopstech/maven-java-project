@@ -36,6 +36,9 @@ pipeline {
             }
         }
         stage('Deploy Package') {
+            when {
+                branch 'test'
+            }
             input {
                 message "Should we continue?"
             }
