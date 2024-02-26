@@ -35,10 +35,15 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Deploy Package') {
+        stage('Check Deploy Branch') {
             when {
                 branch 'test'
             }
+            steps {
+                echo 'Deploying'
+            }
+        }
+        stage('Deploy Package') {
             input {
                 message "Should we continue?"
             }
