@@ -48,7 +48,7 @@ pipeline {
         stage('Copy War file to Tomcat') {
             steps {
                 echo 'file copied'
-                sh 'rsync -av target/addressbook.war /opt/apache-tomcat-9.0.85/webapps/'
+                sh 'sudo rsync -av target/addressbook.war /opt/apache-tomcat-9.0.85/webapps/'
             }
         }
     }
